@@ -17,7 +17,6 @@ namespace ConsoleProj
         int energyLeft;
 
         //Fight
-        //Need work - Medic needs to could heal
         public void Battle(int uRole, int fRole, int eRole)
         {
             ConsoleInput input = new ConsoleInput();

@@ -16,7 +16,7 @@ namespace ConsoleProj
             Error error = new Error();
             Fight battle = new Fight();
 
-            //Place holders
+            //Placeholders
             string usr_Input = null;
             string chr_Name = null;
             string usr_Role = null;
@@ -25,6 +25,7 @@ namespace ConsoleProj
             int friendly_Role_Num = 0;
             int enemy_Role_Num = 0;
 
+            //For random enemy
             Random rnd_Int;
 
             //Regex testing
@@ -93,7 +94,7 @@ namespace ConsoleProj
 
                     Console.WriteLine("");
 
-                    role.U(usr_Role_Num);
+                    role.UDescription(usr_Role_Num);
 
                     break;
                 }
@@ -151,7 +152,7 @@ namespace ConsoleProj
 
                         error.UserError("roleF0");
 
-                        role.F(friendly_Role_Num);
+                        role.FDescription(friendly_Role_Num);
 
                         Console.WriteLine("Get on the transport!");
 
@@ -193,7 +194,7 @@ namespace ConsoleProj
                         Console.WriteLine("Don't loose your squard mate.");
                         Console.WriteLine("");
 
-                        role.F(friendly_Role_Num);
+                        role.FDescription(friendly_Role_Num);
 
                         Console.WriteLine("Get onboard the transport you two!");
 
@@ -210,7 +211,7 @@ namespace ConsoleProj
                         Console.WriteLine("You will get a marine with you insted.");
                         Console.WriteLine("");
 
-                        role.F(friendly_Role_Num);
+                        role.FDescription(friendly_Role_Num);
 
                         Console.WriteLine("Get on the transport!");
 
@@ -277,7 +278,7 @@ namespace ConsoleProj
                     }
 
 
-                    role.E(enemy_Role_Num);
+                    role.EDescription(enemy_Role_Num);
 
                     break;
                 }

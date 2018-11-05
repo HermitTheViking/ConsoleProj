@@ -4,6 +4,7 @@ namespace ConsoleProj
 {
     class Roles
     {
+        //Placeholders
         public int hp;
         public int armor;
         public short weapon;
@@ -13,24 +14,15 @@ namespace ConsoleProj
 
         public string description;
 
-        public void U(int input)
+        //User
+        //For Program.cs
+        public void UDescription(int input)
         {
             Description Description = new Description();
             Console.WriteLine(Description.RoleDescription(input));
         }
 
-        public void F(int input)
-        {
-            Description Description = new Description();
-            Console.WriteLine(Description.RoleDescription(input));
-        }
-
-        public void E(int input)
-        {
-            Description Description = new Description();
-            Console.WriteLine(Description.RoleDescription(input));
-        }
-
+        //For Fight.cs
         public dynamic UStats(int input)
         {
             Stats Stats = new Stats();
@@ -40,6 +32,15 @@ namespace ConsoleProj
             return new { hp = Stats.HP(input), armor = Stats.Armor(input), weapon = Stats.Weapon(input), dps.ground, dps.air, dps.energy, speed = Stats.Speed(input), sight = Stats.Sight(input) };
         }
 
+        //Friendly
+        //For Program.cs
+        public void FDescription(int input)
+        {
+            Description Description = new Description();
+            Console.WriteLine(Description.RoleDescription(input));
+        }
+
+        //For Fight.cs
         public dynamic FStats(int input)
         {
             Stats Stats = new Stats();
@@ -49,6 +50,15 @@ namespace ConsoleProj
             return new { hp = Stats.HP(input), armor = Stats.Armor(input), weapon = Stats.Weapon(input), dps.ground, dps.air, dps.energy, speed = Stats.Speed(input), sight = Stats.Sight(input) };
         }
 
+        //Enemy
+        //For Program.cs
+        public void EDescription(int input)
+        {
+            Description Description = new Description();
+            Console.WriteLine(Description.RoleDescription(input));
+        }
+
+        //For Fight.cs
         public dynamic EStats(int input)
         {
             Stats Stats = new Stats();
