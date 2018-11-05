@@ -1,0 +1,11 @@
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\bin\Debug\netcoreapp2.1\ConsoleProj.deps.json
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\bin\Debug\netcoreapp2.1\ConsoleProj.runtimeconfig.json
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\bin\Debug\netcoreapp2.1\ConsoleProj.runtimeconfig.dev.json
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\bin\Debug\netcoreapp2.1\ConsoleProj.dll
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\bin\Debug\netcoreapp2.1\ConsoleProj.pdb
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\obj\Debug\netcoreapp2.1\ConsoleProj.csprojAssemblyReference.cache
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\obj\Debug\netcoreapp2.1\ConsoleProj.csproj.CoreCompileInputs.cache
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\obj\Debug\netcoreapp2.1\ConsoleProj.AssemblyInfoInputs.cache
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\obj\Debug\netcoreapp2.1\ConsoleProj.AssemblyInfo.cs
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\obj\Debug\netcoreapp2.1\ConsoleProj.dll
+C:\Users\MAMO\OneDrive - Dalgasgroup A S\Privat\dotnet\ConsoleProj\ConsoleProj\obj\Debug\netcoreapp2.1\ConsoleProj.pdb
