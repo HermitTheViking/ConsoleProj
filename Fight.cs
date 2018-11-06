@@ -35,217 +35,137 @@ namespace ConsoleProj
             dynamic regexTestSimpelYes = null;
             dynamic regexTestSimpelNo = null;
 
-            if (fRole != 0)
+            uStats = stats.Item1;
+            fStats = stats.Item2;
+            eStats = stats.Item3;
+
+            //Combat
+            do
             {
-                uStats = stats.Item1;
-                fStats = stats.Item2;
-                eStats = stats.Item3;
+                Console.WriteLine("Terran attack");
 
-                //Combat
-                do
+                //U / F attack
+                if ((fRole == 0) & (fStats.hp >= 1))
                 {
-                    Console.WriteLine("Terran attack");
+                    turn = One_Two();
+                }
+                else
+                {
+                    turn = 1;
+                }
 
-                    //U / F attack
-                    if (fStats.hp >= 1)
+                //U attacking
+                if (turn == 1)
+                {
+                    if ((uRole == 1) & (fStats.hp >= 1) & (uStats.energy >= 24))
                     {
-                        turn = One_Two();
-                    }
-                    else
-                    {
-                        turn = 1;
-                    }
+                        Console.WriteLine(Environment.NewLine + "Do you wan't heal your squard mate?");
 
-                    //U attacking
-                    if (turn == 1)
-                    {
-                        if ((uRole == 1) & (fStats.hp >= 1) & (uStats.energy >= 24))
+                        do
                         {
-                            Console.WriteLine("");
-                            Console.WriteLine("Do you wan't heal your squard mate?");
+                            Console.WriteLine("HINT: Yes or No");
 
-                            do
-                            {
-                                Console.WriteLine("HINT: Yes or No");
-
-                                //Choose user name
-                                usr_Input = Console.ReadLine();
+                            //Choose user name
+                            usr_Input = Console.ReadLine();
                                 
-                                regexTestSimpelYes = input.RegexTest("simpleYes", usr_Input);
-                                regexTestSimpelNo = input.RegexTest("simpleNo", usr_Input);
+                            regexTestSimpelYes = input.RegexTest("simpleYes", usr_Input);
+                            regexTestSimpelNo = input.RegexTest("simpleNo", usr_Input);
                                 
-                                //usr_Input != Yes or No
-                                if (regexTestSimpelYes.bool_Test == false & regexTestSimpelNo.bool_Test == false)
-                                {
-                                    error.UserError("simple");
-                                }
-                                //usr_Input == Yes
-                                else if (regexTestSimpelYes.bool_Test)
-                                {
-                                    heal = Healing(uStats, fStats);
-
-                                    uStats = new { uStats.hp, uStats.armor, uStats.weapon, uStats.ground, uStats.air, energy = heal.energyLeft, uStats.speed, uStats.sight };
-                                    Console.WriteLine("You have " + uStats.energy + " energy left. ");
-
-                                    hpLeft = fStats.hp + heal.healDone;
-
-                                    fStats = new { hp = hpLeft, fStats.armor, fStats.weapon, fStats.ground, fStats.air, fStats.energy, fStats.speed, fStats.sight };
-                                    Console.WriteLine("Friendly have " + fStats.hp + " HP left. ");
-
-                                    break;
-                                }
-                                //usr_Input == No
-                                else if (regexTestSimpelNo.bool_Test)
-                                {
-                                    break;
-                                }
-                            } while (true);
-                        }
-                        else if ((uRole == 1) & (fStats.hp <= 0))
-                        {
-                            Console.WriteLine("");
-                            Console.WriteLine("Your squard mate is dead, you can't do anything except of runing away!! ");
-
-                            break;
-                        }
-                        else if (uRole != 1)
-                        {
-                            hpLeft = Attack(uRole, eRole, uStats, eStats);
-
-                            eStats = new { hp = hpLeft, eStats.armor, eStats.weapon, eStats.ground, eStats.air, eStats.energy, eStats.speed, eStats.sight };
-                            Console.WriteLine("It has " + eStats.hp + " HP left. ");
-
-                            //Check enemy HP
-                            if (eStats.hp <= 0)
+                            //usr_Input != Yes or No
+                            if (regexTestSimpelYes.bool_Test == false & regexTestSimpelNo.bool_Test == false)
                             {
-                                Console.WriteLine("");
-                                Console.WriteLine("You have killed it!!");
+                                error.UserError("simple");
+                            }
+                            //usr_Input == Yes
+                            else if (regexTestSimpelYes.bool_Test)
+                            {
+                                heal = Healing(uStats, fStats);
 
+                                uStats = new { uStats.hp, uStats.armor, uStats.weapon, uStats.ground, uStats.air, energy = heal.energyLeft, uStats.speed, uStats.sight };
+                                Console.WriteLine("You have " + uStats.energy + " energy left. ");
+                                hpLeft = fStats.hp + heal.healDone;
+
+                                fStats = new { hp = hpLeft, fStats.armor, fStats.weapon, fStats.ground, fStats.air, fStats.energy, fStats.speed, fStats.sight };
+                                Console.WriteLine("Friendly have " + fStats.hp + " HP left. ");
                                 break;
                             }
-                        }
-                    }
-                    //F attacking
-                    else if (turn == 2 & fStats.hp >= 1)
-                    {
-                        if (fRole == 1)
-                        {
-                            //Friendly healing U
-                            if (One_Two() == 2)
+                            //usr_Input == No
+                            else if (regexTestSimpelNo.bool_Test)
                             {
-                                heal = Healing(fStats, uStats);
-
-                                fStats = new { fStats.hp, fStats.armor, fStats.weapon, fStats.ground, fStats.air, energy = heal.energyLeft, fStats.speed, fStats.sight };
-                                Console.WriteLine("Friendly have " + uStats.energy + " energy left. ");
-
-                                hpLeft = uStats.hp + heal.healDone;
-
-                                uStats = new { hp = hpLeft, uStats.armor, uStats.weapon, uStats.ground, uStats.air, uStats.energy, uStats.speed, uStats.sight };
-                                Console.WriteLine("You have " + uStats.hp + " HP left. ");
-                            }
-                        }
-                        else if (fRole != 1)
-                        {
-                            hpLeft = Attack(fRole, eRole, fStats, eStats);
-
-                            eStats = new { hp = hpLeft, eStats.armor, eStats.weapon, eStats.ground, eStats.air, eStats.energy, eStats.speed, eStats.sight };
-                            Console.WriteLine("It has " + eStats.hp + " HP left. ");
-
-                            //Check enemy HP
-                            if (eStats.hp <= 0)
-                            {
-                                Console.WriteLine("");
-                                Console.WriteLine("Friendly have killed it!!");
-
                                 break;
                             }
-                        }
+                        } while (true);
                     }
-
-                    Console.WriteLine("");
-                    Console.WriteLine("Zerg attack");
-
-                    //E attack
-                    if (fStats.hp >= 1)
+                    else if ((uRole == 1) & (fStats.hp <= 0))
                     {
-                        turn = One_Two();
-                    }
-                    else
-                    {
-                        turn = 1;
-                    }
-
-                    //U attacked
-                    if (turn == 1)
-                    {
-                        hpLeft = Attack(eRole, uRole, eStats, uStats);
-
-                        uStats = new { hp = hpLeft, uStats.armor, uStats.weapon, uStats.ground, uStats.air, uStats.energy, uStats.speed, uStats.sight };
-                        Console.WriteLine("You have " + uStats.hp + " HP left. ");
-
-                        //Check user HP
-                        if (uStats.hp <= 0)
-                        {
-                            Console.WriteLine("");
-                            Console.WriteLine("You have died!!");
-
-                            break;
-                        }
-                    }
-                    //F attacked
-                    else if (turn == 2 & fStats.hp >= 1)
-                    {
-                        hpLeft = Attack(eRole, fRole, eStats, fStats);
-
-                        fStats = new { hp = hpLeft, fStats.armor, fStats.weapon, fStats.ground, fStats.air, fStats.energy, fStats.speed, fStats.sight };
-                        Console.WriteLine("Friendly have " + fStats.hp + " HP left. ");
-
-                        //Check user HP
-                        if (fStats.hp <= 0)
-                        {
-                            Console.WriteLine("");
-                            Console.WriteLine("Friendly have died!!");
-                        }
-                    }
-
-                    Console.WriteLine("");
-                } while (true);
-
-                Console.WriteLine("");
-                Console.WriteLine("You have " + uStats.hp + " HP left. ");
-                Console.WriteLine("You have " + uStats.energy + " point of energy left. ");
-                Console.WriteLine("Friendly have " + fStats.hp + " HP left. ");
-                Console.WriteLine("Friendly have " + fStats.energy + " point of energy left. ");
-                Console.WriteLine("Enemy have " + eStats.hp + " HP left. ");
-            }
-            else if (fRole == 0)
-            {
-                uStats = stats.Item1;
-                eStats = stats.Item3;
-
-                do
-                {
-                    Console.WriteLine("Terran attack");
-
-                    //U attacking
-                    hpLeft = Attack(uRole, eRole, uStats, eStats);
-
-                    eStats = new { hp = hpLeft, eStats.armor, eStats.weapon, eStats.ground, eStats.air, eStats.energy, eStats.speed, eStats.sight };
-                    Console.WriteLine("It has " + eStats.hp + " HP left. ");
-
-                    //Check enemy HP
-                    if (eStats.hp <= 0)
-                    {
-                        Console.WriteLine("");
-                        Console.WriteLine("You have killed it!!");
-
+                        Console.WriteLine(Environment.NewLine + "Your squard mate is dead, you can't do anything except of runing away!! ");
                         break;
                     }
+                    else if (uRole != 1)
+                    {
+                        hpLeft = Attack(uRole, eRole, uStats, eStats);
 
-                    Console.WriteLine("");
-                    Console.WriteLine("Zerg attack");
+                        eStats = new { hp = hpLeft, eStats.armor, eStats.weapon, eStats.ground, eStats.air, eStats.energy, eStats.speed, eStats.sight };
+                        Console.WriteLine("It has " + eStats.hp + " HP left. ");
 
-                    //E attacking
+                        //Check enemy HP
+                        if (eStats.hp <= 0)
+                        {
+                            Console.WriteLine(Environment.NewLine + "You have killed it!!");
+                            break;
+                        }
+                    }
+                }
+                //F attacking
+                else if ((turn == 2) & (fStats.hp >= 1))
+                {
+                    if (fRole == 1)
+                    {
+                        //Friendly healing U
+                        if (One_Two() == 2)
+                        {
+                            heal = Healing(fStats, uStats);
+
+                            fStats = new { fStats.hp, fStats.armor, fStats.weapon, fStats.ground, fStats.air, energy = heal.energyLeft, fStats.speed, fStats.sight };
+                            Console.WriteLine("Friendly have " + uStats.energy + " energy left. ");
+
+                            hpLeft = uStats.hp + heal.healDone;
+
+                            uStats = new { hp = hpLeft, uStats.armor, uStats.weapon, uStats.ground, uStats.air, uStats.energy, uStats.speed, uStats.sight };
+                            Console.WriteLine("You have " + uStats.hp + " HP left. ");
+                        }
+                    }
+                    else if (fRole != 1)
+                    {
+                        hpLeft = Attack(fRole, eRole, fStats, eStats);
+
+                        eStats = new { hp = hpLeft, eStats.armor, eStats.weapon, eStats.ground, eStats.air, eStats.energy, eStats.speed, eStats.sight };
+                        Console.WriteLine("It has " + eStats.hp + " HP left. ");
+
+                        //Check enemy HP
+                        if (eStats.hp <= 0)
+                        {
+                            Console.WriteLine(Environment.NewLine + "Friendly have killed it!!");
+                            break;
+                        }
+                    }
+                }
+                    
+                Console.WriteLine(Environment.NewLine + "Zerg attack");
+
+                //E attack
+                if ((fStats.hp >= 1) & (fRole == 0))
+                {
+                    turn = One_Two();
+                }
+                else
+                {
+                    turn = 1;
+                }
+
+                //U attacked
+                if (turn == 1)
+                {
                     hpLeft = Attack(eRole, uRole, eStats, uStats);
 
                     uStats = new { hp = hpLeft, uStats.armor, uStats.weapon, uStats.ground, uStats.air, uStats.energy, uStats.speed, uStats.sight };
@@ -254,15 +174,33 @@ namespace ConsoleProj
                     //Check user HP
                     if (uStats.hp <= 0)
                     {
-                        Console.WriteLine("");
-                        Console.WriteLine("You have died!!");
-
+                        Console.WriteLine(Environment.NewLine + "You have died!!");
                         break;
                     }
+                }
+                //F attacked
+                else if ((turn == 2) & (fStats.hp >= 1))
+                {
+                    hpLeft = Attack(eRole, fRole, eStats, fStats);
 
-                    Console.WriteLine("");
-                } while (true);
-            }
+                    fStats = new { hp = hpLeft, fStats.armor, fStats.weapon, fStats.ground, fStats.air, fStats.energy, fStats.speed, fStats.sight };
+                    Console.WriteLine("Friendly have " + fStats.hp + " HP left. ");
+
+                    //Check user HP
+                    if (fStats.hp <= 0)
+                    {
+                        Console.WriteLine(Environment.NewLine + "Friendly have died!!");
+                    }
+                }
+
+                Console.WriteLine("");
+            } while (true);
+                
+            Console.WriteLine(Environment.NewLine + "You have " + uStats.hp + " HP left. ");
+            Console.WriteLine("You have " + uStats.energy + " point of energy left. ");
+            Console.WriteLine("Friendly have " + fStats.hp + " HP left. ");
+            Console.WriteLine("Friendly have " + fStats.energy + " point of energy left. ");
+            Console.WriteLine("Enemy have " + eStats.hp + " HP left. ");
         }
 
         //Stats for roles pulled from Roles.cs
@@ -278,15 +216,7 @@ namespace ConsoleProj
             u = role.UStats(uRole);
 
             //Friendly stats
-            if (fRole > 0)
-            {
-                f = role.FStats(fRole);
-            }
-            //Empty dynamic f
-            else
-            {
-                f = new { };
-            }
+            f = role.FStats(fRole);
 
             //Enemy stats
             e = role.EStats(eRole);
@@ -331,13 +261,11 @@ namespace ConsoleProj
                 switch (hitMiss)
                 {
                     case 1:
-                        Console.WriteLine("");
-                        Console.WriteLine("Hit missed!! ");
+                        Console.WriteLine(Environment.NewLine + "Hit missed!! ");
                         break;
                     case 2:
                         damage = attacker.air;
-                        Console.WriteLine("");
-                        Console.WriteLine("Hit for " + damage + "! ");
+                        Console.WriteLine(Environment.NewLine + "Hit for " + damage + "! ");
                         defence = Defence(dRoleId, defender);
 
                         if (defence == 1)
@@ -353,8 +281,7 @@ namespace ConsoleProj
                         break;
                     case 3:
                         damage = attacker.air / 2;
-                        Console.WriteLine("");
-                        Console.WriteLine("Hit for half damage " + damage + "! ");
+                        Console.WriteLine(Environment.NewLine + "Hit for half damage " + damage + "! ");
                         defence = Defence(dRoleId, defender);
 
                         if (defence == 1)
@@ -373,12 +300,12 @@ namespace ConsoleProj
             //User or Friendly have no air damage
             else if ((attacker.air == 0) & (dRoleId == 13))
             {
-                Console.WriteLine("No air damage!!");
+                Console.WriteLine(Environment.NewLine + "No air damage!!");
             }
             //No damage roles
             else if ((attacker.ground == 0) & (attacker.air == 0))
             {
-                Console.WriteLine("No weapon!!");
+                Console.WriteLine(Environment.NewLine + "No weapon!!");
             }
             //Attacker not flying or medic
             else if (attacker.ground >= 1)
@@ -386,13 +313,11 @@ namespace ConsoleProj
                 switch (hitMiss)
                 {
                     case 1:
-                        Console.WriteLine("");
-                        Console.WriteLine("Hit missed!! ");
+                        Console.WriteLine(Environment.NewLine + "Hit missed!! ");
                         break;
                     case 2:
                         damage = attacker.ground;
-                        Console.WriteLine("");
-                        Console.WriteLine("Hit for " + damage + "! ");
+                        Console.WriteLine(Environment.NewLine + "Hit for " + damage + "! ");
                         defence = Defence(dRoleId, defender);
 
                         if (defence == 1)
@@ -408,8 +333,7 @@ namespace ConsoleProj
                         break;
                     case 3:
                         damage = attacker.ground / 2;
-                        Console.WriteLine("");
-                        Console.WriteLine("Hit for half damage " + damage + "! ");
+                        Console.WriteLine(Environment.NewLine + "Hit for half damage " + damage + "! ");
                         defence = Defence(dRoleId, defender);
 
                         if (defence == 1)
@@ -465,13 +389,11 @@ namespace ConsoleProj
 
             if (energyLeft <= 24)
             {
-                Console.WriteLine("");
-                Console.WriteLine("Not enough energy!! ");
+                Console.WriteLine(Environment.NewLine + "Not enough energy!! ");
             }
             else
             {
-                Console.WriteLine("");
-                Console.WriteLine("Healed for 13 HP for the cost of 25 energy points. ");
+                Console.WriteLine(Environment.NewLine + "Healed for 13 HP for the cost of 25 energy points. ");
 
                 energyLeft = energyLeft - 25;
 

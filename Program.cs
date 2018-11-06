@@ -50,8 +50,7 @@ namespace ConsoleProj
                 {
                     chr_Name = usr_Input;
 
-                    Console.WriteLine("");
-                    Console.WriteLine("Hello " + usr_Input + ". Welcome to StarScape!");
+                    Console.WriteLine(Environment.NewLine + "Hello " + usr_Input + ". Welcome to StarScape!" + Environment.NewLine);
                     break;
                 }
                 //usr_Input == empty
@@ -61,9 +60,7 @@ namespace ConsoleProj
                 }
             } while (true);
             
-            Console.WriteLine("");
-            Console.WriteLine("What is your profession?");
-            Console.WriteLine("");
+            Console.WriteLine("What is your profession?" + Environment.NewLine);
 
             //User role
             do
@@ -91,19 +88,16 @@ namespace ConsoleProj
                 {
                     usr_Role = usr_Input;
                     usr_Role_Num = regexTestUInput.role_Num;
-
-                    Console.WriteLine("");
-
+                    
                     role.UDescription(usr_Role_Num);
-
                     break;
                 }
 
             } while (true);
 
-            Console.WriteLine("");
-            Console.WriteLine("Is it okay that some one tag along with you?");
-            Console.WriteLine("");
+            //Console.WriteLine("");
+            Console.WriteLine("Is it okay that some one tag along with you?" + Environment.NewLine);
+            //Console.WriteLine("");
 
             //Yes or No to friendly
             do
@@ -139,9 +133,7 @@ namespace ConsoleProj
                     //usr_Role != medic
                     else if (regexTestFRole.bool_Test == false)
                     {
-                        Console.WriteLine("");
-                        Console.WriteLine("Okay lone wolf, go ahead and enter the transport.");
-
+                        Console.WriteLine(Environment.NewLine + "Okay lone wolf, go ahead and enter the transport." + Environment.NewLine);
                         break;
                     }
                     //usr_Role == medic
@@ -154,8 +146,7 @@ namespace ConsoleProj
 
                         role.FDescription(friendly_Role_Num);
 
-                        Console.WriteLine("Get on the transport!");
-
+                        Console.WriteLine("Get on the transport!" + Environment.NewLine);
                         break;
                     }   
                 }
@@ -164,8 +155,8 @@ namespace ConsoleProj
             //Friendly role
             if ((regexTestSimpelYes.bool_Test) & (regexTestSimpelNo.bool_Test == false))
             {
-                Console.WriteLine("");
-                Console.WriteLine("What profession do you what with you?");
+                //Console.WriteLine("");
+                Console.WriteLine(Environment.NewLine + "What profession do you what with you?");
 
                 do
                 {
@@ -190,14 +181,11 @@ namespace ConsoleProj
                         friendly_Role = usr_Input;
                         friendly_Role_Num = regexTestUInput.role_Num;
 
-                        Console.WriteLine("");
-                        Console.WriteLine("Don't loose your squard mate.");
-                        Console.WriteLine("");
+                        Console.WriteLine(Environment.NewLine + "Don't loose your squard mate.");
 
                         role.FDescription(friendly_Role_Num);
 
-                        Console.WriteLine("Get onboard the transport you two!");
-
+                        Console.WriteLine("Get onboard the transport you two!" + Environment.NewLine);
                         break;
                     }
                     //usr_Role & usr_Input == Medic
@@ -205,24 +193,19 @@ namespace ConsoleProj
                     {
                         friendly_Role = "Marine";
                         friendly_Role_Num = 2;
-
-                        Console.WriteLine("");
-                        Console.WriteLine("Two medics should not go into combat with out a marine!");
+                        
+                        Console.WriteLine(Environment.NewLine + "Two medics should not go into combat with out a marine!");
                         Console.WriteLine("You will get a marine with you insted.");
-                        Console.WriteLine("");
 
                         role.FDescription(friendly_Role_Num);
 
-                        Console.WriteLine("Get on the transport!");
-
+                        Console.WriteLine("Get on the transport!" + Environment.NewLine);
                         break;
                     }
                 } while (true);
             }
             
-            Console.WriteLine("");
-            Console.WriteLine("Are you ready for a battle?");
-            Console.WriteLine("");
+            Console.WriteLine("Are you ready for a battle?" + Environment.NewLine);
 
             //Battle Yes or No
             do
@@ -249,9 +232,7 @@ namespace ConsoleProj
                 //usr_Input == Yes
                 else if (regexTestSimpelYes.bool_Test)
                 {
-                    Console.WriteLine("");
-                    Console.WriteLine("Your enemy for this battle is: ");
-                    Console.WriteLine("");
+                    Console.WriteLine(Environment.NewLine + "Your enemy for this battle is: ");
 
                     rnd_Int = new Random();
                     int rnd_Num = rnd_Int.Next(1, 5);
@@ -277,7 +258,6 @@ namespace ConsoleProj
                         enemy_Role_Num = 14;
                     }
 
-
                     role.EDescription(enemy_Role_Num);
 
                     break;
@@ -289,9 +269,8 @@ namespace ConsoleProj
             {
                 battle.Battle(usr_Role_Num, friendly_Role_Num, enemy_Role_Num);
             }
-
-            Console.WriteLine("");
-            Console.WriteLine("The end");
+            
+            Console.WriteLine(Environment.NewLine + "The end");
 
             Console.ReadLine();
         }

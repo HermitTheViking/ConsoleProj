@@ -75,6 +75,9 @@ namespace ConsoleProj
         {
             switch (input)
             {
+                case 0:
+                    hp = 0;
+                    break;
                 //Terran
                 case 1:
                     hp = 60;
@@ -110,6 +113,9 @@ namespace ConsoleProj
         {
             switch (input)
             {
+                case 0:
+                    armor = 0;
+                    break;
                 //Terran
                 case 1:
                     armor = 1;
@@ -145,6 +151,9 @@ namespace ConsoleProj
         {
             switch (input)
             {
+                case 0:
+                    weapon = 0;
+                    break;
                 //Terran
                 case 1:
                     weapon = 4;
@@ -180,6 +189,9 @@ namespace ConsoleProj
         {
             switch (input)
             {
+                case 0:
+                    dps = new { ground = 0, air = 0, energy = 0 };
+                    break;
                 //Terran
                 case 1:
                     dps = new { ground = 0, air = 0, energy = 50 };
@@ -215,6 +227,9 @@ namespace ConsoleProj
         {
             switch (input)
             {
+                case 0:
+                    speed = 0;
+                    break;
                 //Terran
                 case 1:
                     speed = (short)2.25;
@@ -250,6 +265,9 @@ namespace ConsoleProj
         {
             switch (input)
             {
+                case 0:
+                    sight = 0;
+                    break;
                 //Terran
                 case 1:
                     sight = 9;
@@ -295,7 +313,8 @@ namespace ConsoleProj
             {
                 //Terran
                 case 1:
-                    output = "As a medic your job is to keep your squad member alive, " + Environment.NewLine;
+                    output = Environment.NewLine;
+                    output += "As a medic your job is to keep your squad member alive, " + Environment.NewLine;
                     output += "you don't get a weapone as a medic so you will have to relay on your squad. " + Environment.NewLine;
                     output += "You can heal targets that are a maximum of " + Stats.Weapon(input) + " units away. " + Environment.NewLine;
                     output += "You get " + Stats.HP(input) + " hit points. " + Environment.NewLine;
@@ -308,7 +327,8 @@ namespace ConsoleProj
                     description = output;
                     break;
                 case 2:
-                    output = "As an marine you get a rifle. " + Environment.NewLine;
+                    output = Environment.NewLine;
+                    output += "As an marine you get a rifle. " + Environment.NewLine;
                     output += "You get " + Stats.HP(input) + " hit points. " + Environment.NewLine;
                     output += "Your weapone can hit targets that are a maximum of " + Stats.Weapon(input) + " units away. " + Environment.NewLine;
                     output += "Your damage agints ground targets is " + dps.ground + " hit points. " + Environment.NewLine;
@@ -319,7 +339,8 @@ namespace ConsoleProj
                     description = output;
                     break;
                 case 3:
-                    output = "As a ghost you will get a high powered rifle and a cloaking device. " + Environment.NewLine;
+                    output = Environment.NewLine;
+                    output += "As a ghost you will get a high powered rifle and a cloaking device. " + Environment.NewLine;
                     output += "You get " + Stats.HP(input) + " hit points. " + Environment.NewLine;
                     output += "Your weapone can hit targets that are a maximum of " + Stats.Weapon(input) + " units away. " + Environment.NewLine;
                     output += "Your damage agints ground targets is " + dps.ground + " hit points. " + Environment.NewLine;
@@ -332,7 +353,8 @@ namespace ConsoleProj
                     description = output;
                     break;
                 case 4:
-                    output = "As a marauder. " + Environment.NewLine;
+                    output = Environment.NewLine;
+                    output += "As a marauder. " + Environment.NewLine;
                     output += "You get " + Stats.HP(input) + " hit points. " + Environment.NewLine;
                     output += "You have " + Stats.Armor(input) + " point(s) of armor. " + Environment.NewLine;
                     output += "Your weapone can hit targets that are a maximum of " + Stats.Weapon(input) + " units away. " + Environment.NewLine;
@@ -344,7 +366,8 @@ namespace ConsoleProj
                     break;
                 //Zerg
                 case 11:
-                    output = "Zergling. " + Environment.NewLine;
+                    output = Environment.NewLine;
+                    output += "Zergling. " + Environment.NewLine;
                     output += "It has " + Stats.HP(input) + " hit points. " + Environment.NewLine;
                     output += "It's weapone can hit targets that are a maximum of " + Stats.Weapon(input) + " units away. " + Environment.NewLine;
                     output += "It has a damage agints ground targets is " + dps.ground + " hit points. " + Environment.NewLine;
@@ -354,7 +377,8 @@ namespace ConsoleProj
                     description = output;
                     break;
                 case 12:
-                    output = "Hydralisk. " + Environment.NewLine;
+                    output = Environment.NewLine;
+                    output += "Hydralisk. " + Environment.NewLine;
                     output += "It has " + Stats.HP(input) + " hit points. " + Environment.NewLine;
                     output += "It's weapone can hit targets that are a maximum of " + Stats.Weapon(input) + " units away. " + Environment.NewLine;
                     output += "It has a damage agints ground targets is " + dps.ground + " hit points. " + Environment.NewLine;
@@ -365,7 +389,8 @@ namespace ConsoleProj
                     description = output;
                     break;
                 case 13:
-                    output = "Mutalisk. " + Environment.NewLine;
+                    output = Environment.NewLine;
+                    output += "Mutalisk. " + Environment.NewLine;
                     output += "It has " + Stats.HP(input) + " hit points. " + Environment.NewLine;
                     output += "It's weapone can hit targets that are a maximum of " + Stats.Weapon(input) + " units away. " + Environment.NewLine;
                     output += "It has a damage agints ground targets is " + dps.ground + " hit points. " + Environment.NewLine;
@@ -376,7 +401,8 @@ namespace ConsoleProj
                     description = output;
                     break;
                 case 14:
-                    output = "Roach. " + Environment.NewLine;
+                    output = Environment.NewLine;
+                    output += "Roach. " + Environment.NewLine;
                     output += "It has " + Stats.HP(input) + " hit points. " + Environment.NewLine;
                     output += "It's weapone can hit targets that are a maximum of " + Stats.Weapon(input) + " units away. " + Environment.NewLine;
                     output += "It has a damage agints ground targets is " + dps.ground + " hit points. " + Environment.NewLine;

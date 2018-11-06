@@ -7,7 +7,6 @@ namespace ConsoleProj
         //Error dialog
         public void UserError(string variable)
         {
-            Console.WriteLine("");
             //Error dialog if usr_Input have no letters in it
             if (variable == "usr_Input")
             {
