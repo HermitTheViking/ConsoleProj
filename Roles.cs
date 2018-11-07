@@ -21,14 +21,14 @@ namespace ConsoleProj
             Console.WriteLine(Description.RoleDescription(input));
         }
 
+        delegate dynamic del(int h, int ar, short w, int g, int a, int e, short sp, int s);
+
         //For Fight.cs
         public dynamic RoleStats(int input)
         {
             Stats Stats = new Stats();
 
-            dps = Stats.Damage(input);
-
-            dynamic result = new { hp = Stats.HP(input), armor = Stats.Armor(input), weapon = Stats.Weapon(input), dps.ground, dps.air, dps.energy, speed = Stats.Speed(input), sight = Stats.Sight(input) }; 
+            dynamic result = new { hp = Stats.HP(input), armor = Stats.Armor(input), weapon = Stats.Weapon(input), Stats.Damage(input).ground, Stats.Damage(input).air, Stats.Damage(input).energy, speed = Stats.Speed(input), sight = Stats.Sight(input) };
 
             return result;
         }
