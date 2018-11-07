@@ -23,21 +23,16 @@ namespace ConsoleProj
             Error error = new Error();
 
             //For stats
-            (dynamic, dynamic, dynamic) stats = BattleStats(uRole, fRole, eRole);
-            dynamic uStats;
-            dynamic fStats;
-            dynamic eStats;
-
+            dynamic uStats = BattleStats(uRole);
+            dynamic fStats = BattleStats(fRole);
+            dynamic eStats = BattleStats(eRole);
+            
             //Place holders
             string usr_Input = null;
 
             //Regex testing
             dynamic regexTestSimpelYes = null;
             dynamic regexTestSimpelNo = null;
-
-            uStats = stats.Item1;
-            fStats = stats.Item2;
-            eStats = stats.Item3;
 
             //Combat
             do
@@ -204,24 +199,14 @@ namespace ConsoleProj
         }
 
         //Stats for roles pulled from Roles.cs
-        private (dynamic, dynamic, dynamic) BattleStats(int uRole, int fRole, int eRole)
+        private dynamic BattleStats(int roleID)
         {
-            dynamic u;
-            dynamic f;
-            dynamic e;
-
             Roles role = new Roles();
 
-            //User stats
-            u = role.UStats(uRole);
+            //Task<dynamic> stats = role.RoleStats(roleID);
 
-            //Friendly stats
-            f = role.FStats(fRole);
-
-            //Enemy stats
-            e = role.EStats(eRole);
-
-            return (u, f, e);
+            //return stats;
+            return role.RoleStats(roleID);
         }
 
         //Hit, hit half or miss

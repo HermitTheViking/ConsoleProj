@@ -14,58 +14,23 @@ namespace ConsoleProj
 
         public string description;
 
-        //User
         //For Program.cs
-        public void UDescription(int input)
+        public void RoleDescription(int input)
         {
             Description Description = new Description();
             Console.WriteLine(Description.RoleDescription(input));
         }
 
         //For Fight.cs
-        public dynamic UStats(int input)
+        public dynamic RoleStats(int input)
         {
             Stats Stats = new Stats();
 
             dps = Stats.Damage(input);
 
-            return new { hp = Stats.HP(input), armor = Stats.Armor(input), weapon = Stats.Weapon(input), dps.ground, dps.air, dps.energy, speed = Stats.Speed(input), sight = Stats.Sight(input) };
-        }
+            dynamic result = new { hp = Stats.HP(input), armor = Stats.Armor(input), weapon = Stats.Weapon(input), dps.ground, dps.air, dps.energy, speed = Stats.Speed(input), sight = Stats.Sight(input) }; 
 
-        //Friendly
-        //For Program.cs
-        public void FDescription(int input)
-        {
-            Description Description = new Description();
-            Console.WriteLine(Description.RoleDescription(input));
-        }
-
-        //For Fight.cs
-        public dynamic FStats(int input)
-        {
-            Stats Stats = new Stats();
-
-            dps = Stats.Damage(input);
-
-            return new { hp = Stats.HP(input), armor = Stats.Armor(input), weapon = Stats.Weapon(input), dps.ground, dps.air, dps.energy, speed = Stats.Speed(input), sight = Stats.Sight(input) };
-        }
-
-        //Enemy
-        //For Program.cs
-        public void EDescription(int input)
-        {
-            Description Description = new Description();
-            Console.WriteLine(Description.RoleDescription(input));
-        }
-
-        //For Fight.cs
-        public dynamic EStats(int input)
-        {
-            Stats Stats = new Stats();
-
-            dps = Stats.Damage(input);
-
-            return new {hp = Stats.HP(input), armor = Stats.Armor(input), weapon = Stats.Weapon(input), dps.ground, dps.air, dps.energy, speed = Stats.Speed(input), sight = Stats.Sight(input) };
+            return result;
         }
     }
 

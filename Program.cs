@@ -89,7 +89,7 @@ namespace ConsoleProj
                     usr_Role = usr_Input;
                     usr_Role_Num = regexTestUInput.role_Num;
                     
-                    role.UDescription(usr_Role_Num);
+                    role.RoleDescription(usr_Role_Num);
                     break;
                 }
 
@@ -144,7 +144,7 @@ namespace ConsoleProj
 
                         error.UserError("roleF0");
 
-                        role.FDescription(friendly_Role_Num);
+                        role.RoleDescription(friendly_Role_Num);
 
                         Console.WriteLine("Get on the transport!" + Environment.NewLine);
                         break;
@@ -183,7 +183,7 @@ namespace ConsoleProj
 
                         Console.WriteLine(Environment.NewLine + "Don't loose your squard mate.");
 
-                        role.FDescription(friendly_Role_Num);
+                        role.RoleDescription(friendly_Role_Num);
 
                         Console.WriteLine("Get onboard the transport you two!" + Environment.NewLine);
                         break;
@@ -197,7 +197,7 @@ namespace ConsoleProj
                         Console.WriteLine(Environment.NewLine + "Two medics should not go into combat with out a marine!");
                         Console.WriteLine("You will get a marine with you insted.");
 
-                        role.FDescription(friendly_Role_Num);
+                        role.RoleDescription(friendly_Role_Num);
 
                         Console.WriteLine("Get on the transport!" + Environment.NewLine);
                         break;
@@ -258,7 +258,7 @@ namespace ConsoleProj
                         enemy_Role_Num = 14;
                     }
 
-                    role.EDescription(enemy_Role_Num);
+                    role.RoleDescription(enemy_Role_Num);
 
                     break;
                 }
