@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ConsoleProj
 {
-    class Terran : RoleAttribute
+    class ZergStats : RoleAttribute
     {
-        public Terran(int hp, int armor, short range, int ground, int air, int energy, short speed, int shigt)
+        public ZergStats(int hp, int armor, short range, int ground, int air, int energy, short speed, int shigt)
         {
             HealtPoints = hp;
             Armor = armor;
